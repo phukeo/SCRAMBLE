@@ -1,47 +1,43 @@
-========
-SCRAMBLE
-========
+# SCRAMBLE
 
-Introduction
-------------
 
-*SCRAMBLE* (Sweep Comparison Research Application for Multiple Back-gated fieLd Effect measurements) is an open-source software package for the comparison of back-gated sweep measurements for graphene field effect transistors (GFETs). It automatically determines the Dirac points, positions of maximum transconductance and calculates the field effect mobilities for electrons and holes. 
+## Introduction
+
+**SCRAMBLE** (**S**weep **C**omparison **R**esearch **A**pplication for **M**ultiple **B**ack-gated fie**L**d **E**ffect measurements) is an open-source software package for the comparison of back-gated sweep measurements for graphene field effect transistors (GFETs). It automatically determines the Dirac points, positions of maximum transconductance and calculates the field effect mobilities for electrons and holes. 
 
 Version: 2.0
 
 License: MIT
 
-Request: Please cite this software package if it has been helpful with your own research. 
+Request: Please cite this software package if it has been helpful with your own research - HyperLink [XXXXXX]
   
-Files Included
---------------
+## Files Included
 
-scrambleFUN.py - Module handling the main functionality.
-scrambleGUI.py - Module handling all aspects of GUI.
-exampleData.zip - Example folder tree layout and raw data files to be imported.
-icon.ico - Application icon.
-README.md - This readme file. 
-Documentation - Documentation Folder. *Not required*
+- scrambleFUN.py : Module handling the main functionality.
+- scrambleGUI.py : Module handling all aspects of GUI.
+- Example_Data.zip : Example data to get to grips with SCRAMBLE import.
+- icon.ico : Application icon.
+- README.md : This readme file. 
 
-System Requirements
-------------------
+
+## System Requirements
 
 1. Windows 64-bit operating system.
 2. Python version 3.6.
-	Non standard Python Dependencies requiring installation (see XXXX [hyperlink to installing modules])
-	2.i. Matplotlib
-	2.ii. NumPy
-	2.iii. Pandas
+3. Non standard Python Dependencies requiring installation (see XXXX [hyperlink to installing modules])
+	* Matplotlib
+	* NumPy
+	* Pandas
 
 ***************
-*****SETUP*****
+# Setup
 ***************
 
-Stage I - Acquiring & Storing Suitable Data
-===========================================
+## Stage I - Acquiring & Storing Suitable Data
+----------------------------------------------
 
-1 - Data Acquisition
---------------------
+### 1 - Data Acquisition
+
 Data must be acquired from Semiconductor Device Analysers (SDA) with the following considerations:
 
 1. The independent variable is Back-gate voltage (Vbg) in units (V)
@@ -49,137 +45,131 @@ Data must be acquired from Semiconductor Device Analysers (SDA) with the followi
 5. Files are exported from SDAs as .csv
 6. There is an equal number of points for the forward and reverse sweeps
 7. The sweep occurs in the following manner.
-	a. Forward Sweep begins at the lower Vbg value (Vbgl)
-	b. Forward Sweep takes an integer number of points to get the higher Vbg value (Vbgh)
-	c. Forward Sweep finishes at Vbgh
-	d. Backward Sweep begins at Vbgh 
-	e. Backward Sweep takes an integer number of points to get Vbgl
-	f. Backward Sweep finishes at Vbgl
+	* Forward Sweep begins at the lower Vbg value (Vbgl)
+	* Forward Sweep takes an integer number of points to get the higher Vbg value (Vbgh)
+	* Forward Sweep finishes at Vbgh
+	* Backward Sweep begins at Vbgh 
+	* Backward Sweep takes an integer number of points to get Vbgl
+	* Backward Sweep finishes at Vbgl
 
-Demonstrative Example:
+**Demonstrative Example**:
  
-Consider a forward and reverse sweep from -100V to 100V with a step size of 1V.
-Here; Vbgl = -100 V, and Vbgh = +100 V.
-The independent variable is swept such that the following points are evaluated:
-[-100, -99, -98 , ..., +98, +99, +100, +100, +99, +98,..., -98, -99, -100] 
-Note that +100 is evaluated twice. 
+* Consider a forward and reverse sweep from -100V to 100V with a step size of 1V.
+* Here; Vbgl = -100 V, and Vbgh = +100 V.
+* The independent variable is swept such that the following points are evaluated:
+	* [-100, -99, -98 , ..., +98, +99, +100, +100, +99, +98,..., -98, -99, -100] 
+* Note that +100 is evaluated twice. 
 
-2 - Data Saving Conventions
----------------------------
+### 2 - Data Saving Conventions
 
 In order to handle automatic import of files, the following must be considered. 
 
 1. Files are located in folders as described below
 2. Files are labelled as per the Naming Convention
 
-Note that an example data set is provided in the online repository and is called "Test_Data". 
+Note that an example data set is provided in the online repository and is called "Example_Data". 
 
-Folder Structure:
+**Folder Structure:**
 
-1. Data obtained from device(s) tested under the same conditions, including device repeats, should be located into a single folder, with the title of the stage name. For example all acquisitions  captured for pristine graphene should be located in a folder called "Pristine". 
-2. After device(s) are exposed to a different annealling / vacuum treatments all new acqusitions should be located in this folder, which exists in the same directory as the stage 1 folder.
+1. Data obtained from device(s) tested under the same conditions, including device repeats, should be located into a single folder, with the title of the stage name. For example all acquisitions  captured for Pristine graphene should be located in a folder called "Pristine". 
+2. After device(s) are exposed to a different annealing / vacuum treatments all new acqusitions should be located in this folder, which exists in the same directory as the stage 1 folder.
 3. Folder names should be numbered in chronological order such as "1_Pristine", "2_Annealed", "3_Annealed + Cleaned" for progressive stages if appropriate. 
   
 
-File Naming Conventions:
+**File Naming Conventions:**
 
-Files should be saved with the following format "TextToBeDisplayed_TextWhichIsHiddenDuringImport.csv". *Different colours*
+Files should be saved with the following format ""TextToBeDisplayed_TextWhichIsHiddenDuringImport.csv"
 The underscore is used to seperate text that the user wants to be displayed in SCRAMBLE.
-It is recommended to keep the TextToBeDisplayed to a minimum to prevent elongated names in the list box. 
+It is recommended to keep the "TextToBeDisplayed" to a minimum to prevent elongated names in the Data List box. 
 For example: "Chip2Device3Measurement2_CapturedOnDD/MM/YY.csv" or (better) "C2D3M2_CapturedOnDD/MM/YY.csv"
 
-Final Name:
+**Final Name:**
 
 During import SCRAMBLE will concatenate the name of the desired text to the name of the folder where the file lives.
 
-Demonstrative Example:
+**Demonstrative Example:**
 
 1) Folder name = "2_Annealed"
 2) File name = "C2D3M3_CapturedOnDD/MM/YY.csv"
 Resulting name will be:
 "2_Annealed_C2D3M3"
 
-Stage II - Downloading SCRAMBLE
-===============================
+## Stage II - Downloading SCRAMBLE
+---------------------------------
 
 There are two ways to download SCRAMBLE. One way relies on users having Git previously installed on their machines
 
 1. Downloading the as a .ZIP
 2. Downloading via git
 
-1 - Downloading the .ZIP 
-------------------------
+### 1 - Downloading the .ZIP 
 
 1. Navigate to the online github repositiory [XXXXX hyperlink]
 2. Press the green "Code" button and select "Download ZIP" from the dropdown
 3. Extract all contents and relocate the extracted folder to a location of your choice on your machine
 
-2 - Downloading via git
------------------------
+### 2 - Downloading via git
 
 1. Open a terminal and navigate to the location where you would like to store SCRAMBLE 
-2. Clone the files using the following command ``$ git clone https://github.com/XXXX/XXXXXXXX.git``
+2. Clone the files using the following command: `git clone https://github.com/phukeo/SCRAMBLE.git`
 
 
-Stage III - Customising SCRAMBLE
-================================
+## Stage III - Customising SCRAMBLE
+-----------------------------------
 
-1 - Import
-----------
+### 1 - Import
 
 Users will need to customise the import algorithm to be in accordance with the data file exported from their measurement system/templates. This is easily achieved following steps below: 
 
 1. Open your own raw data file 
 2. Determine the column numbers for the data and denote these as i for Vbg and j for Isd.
 3. Determine the row number for the data and denote this as k. Note that this should be the header row for the data.
-4. Open up the "scrambleFUN.py" file in a text editor
-5. Navigate to line XXX which reads `$ df=pd.read_csv(fName, usecols=[1,2], skiprows=248)`
-6. Alter line XXX to read `$ df=pd.read_csv(fName, usecols=[i,j], skiprows=(k-1))`
+4. Open up the 'scrambleFUN.py' file in a text editor
+5. Navigate to line XXX which reads ` df=pd.read_csv(fName, usecols=[1,2], skiprows=248)`
+6. Alter line XXX to read ` df=pd.read_csv(fName, usecols=[i,j], skiprows=(k-1))`
 7. Save and close the file
 
-2 - Device Parameters
----------------------
+### 2 - Device Parameters
 
 Setting the device parameters to default values suitable for your devices will offer a substantial time saving everytime SCRAMBLE is used. This is easily achieved following steps below:
 
-1. Open up the "scrambleGUI.py" file in a text editor
-2. Navigate to line XXX which reads `$ sourceDrainEntry.insert(0,5)`. Replace 5 mV with default value for Vds
-3. Navigate to line XXX which reads `$ deviceLengthEntry.insert(0,95)`. Replace 95 um with default value for Device length
-4. Navigate to line XXX which reads `$ deviceWidthEntry.insert(0,80)`. Replace 80 um with default value for Device width
-5. Navigate to line XXX which reads `$ oxideThickEntry.insert(0,300)`. Replace 300 nm with default value for Oxide Thickness
-6. Navigate to line XXX which reads `$ oxideDielecEntry.insert(0,3.8)`. Replace 3.8 with default value for Oxide Dielectric Constant
+1. Open up the 'scrambleGUI.py' file in a text editor
+2. Navigate to line XXX which reads ` sourceDrainEntry.insert(0,5)`. Replace 5 mV with default value for Vds
+3. Navigate to line XXX which reads ` deviceLengthEntry.insert(0,95)`. Replace 95 um with default value for Device length
+4. Navigate to line XXX which reads ` deviceWidthEntry.insert(0,80)`. Replace 80 um with default value for Device width
+5. Navigate to line XXX which reads ` oxideThickEntry.insert(0,300)`. Replace 300 nm with default value for Oxide Thickness
+6. Navigate to line XXX which reads ` oxideDielecEntry.insert(0,3.8)`. Replace 3.8 with default value for Oxide Dielectric Constant
 7. Check Units! 
 8. Save and close the file
 
 ************************
-*****USING SCRAMBLE*****
+# Using SCRAMBLE
 ************************
 
-Stage I - Launching SCRAMBLE
-============================
+## Stage I - Launching SCRAMBLE
+-------------------------------
 
 1. Open a terminal and navigate to the root directory for SCRAMBLE
-2. Run the package `$ python scrambleGUI.py`
+2. Run the package `python scrambleGUI.py`
 
-Stage II - Importing Data into SCRAMBLE
-=======================================
+## Stage II - Importing Data into SCRAMBLE
+------------------------------------------
 
-Handling Import - Pathway I
----------------------------
+### Handling Import - Pathway I
 
 Before the data has been previously processed, the user must use the "Open Folder" button to start the import process.
 
 When the "Open Folder" button is pressed, the user must navigate to the folder where the stage name folders are located.
 
 
-Handling Import - Pathway II
-----------------------------
+### Handling Import - Pathway II
+
 Data that has been previously processed in SCRAMBLE can be swiftly imported using the "Open .BOD" button. This import pathway requires the "UserDefinedName_Data.bod" file to be selected. 
 
 Note: Data can be exported following instructions below. 
 
-Stage III - Using SCRAMBLE
-==========================
+## Stage III - Using SCRAMBLE
+-----------------------------
 
 1. Select data: Use "Open Folder" or "Open .BOD" depending on desired import pathway (see above)
 2. Enter details into the "Device Parameters"
