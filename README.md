@@ -79,9 +79,9 @@ Note that an example data set is provided in the online repository and is called
 **File Naming Conventions:**
 
 Files should be saved with the following format ""TextToBeDisplayed_TextWhichIsHiddenDuringImport.csv"
-The underscore is used to seperate text that the user wants to be displayed in SCRAMBLE.
-It is recommended to keep the "TextToBeDisplayed" to a minimum to prevent elongated names in the Data List box. 
-For example: "Chip2Device3Measurement2_CapturedOnDD/MM/YY.csv" or (better) "C2D3M2_CapturedOnDD/MM/YY.csv"
+* The underscore is used to seperate text that the user wants to be displayed in SCRAMBLE.
+* It is recommended to keep the "TextToBeDisplayed" to a minimum to prevent elongated names in the Data List box. 
+* For example: "Chip2Device3Measurement2_CapturedOnDD/MM/YY.csv" or (better) "C2D3M2_CapturedOnDD/MM/YY.csv"
 
 **Final Name:**
 
@@ -134,11 +134,11 @@ Users will need to customise the import algorithm to be in accordance with the d
 Setting the device parameters to default values suitable for your devices will offer a substantial time saving everytime SCRAMBLE is used. This is easily achieved following steps below:
 
 1. Open up the 'scrambleGUI.py' file in a text editor
-2. Navigate to line XXX which reads ` sourceDrainEntry.insert(0,5)`. Replace 5 mV with default value for Vds
-3. Navigate to line XXX which reads ` deviceLengthEntry.insert(0,95)`. Replace 95 um with default value for Device length
-4. Navigate to line XXX which reads ` deviceWidthEntry.insert(0,80)`. Replace 80 um with default value for Device width
-5. Navigate to line XXX which reads ` oxideThickEntry.insert(0,300)`. Replace 300 nm with default value for Oxide Thickness
-6. Navigate to line XXX which reads ` oxideDielecEntry.insert(0,3.8)`. Replace 3.8 with default value for Oxide Dielectric Constant
+2. Navigate to line XXX which reads ` sourceDrainEntry.insert(0,5)`. Replace ' 5' mV with default value for Vds
+3. Navigate to line XXX which reads ` deviceLengthEntry.insert(0,95)`. Replace ' 95' um with default value for Device length
+4. Navigate to line XXX which reads ` deviceWidthEntry.insert(0,80)`. Replace ' 80' um with default value for Device width
+5. Navigate to line XXX which reads ` oxideThickEntry.insert(0,300)`. Replace ' 300' nm with default value for Oxide Thickness
+6. Navigate to line XXX which reads ` oxideDielecEntry.insert(0,3.8)`. Replace ' 3.8' with default value for Oxide Dielectric Constant
 7. Check Units! 
 8. Save and close the file
 
@@ -150,7 +150,7 @@ Setting the device parameters to default values suitable for your devices will o
 -------------------------------
 
 1. Open a terminal and navigate to the root directory for SCRAMBLE
-2. Run the package `python scrambleGUI.py`
+2. Run the package ` python scrambleGUI.py`
 
 ## Stage II - Importing Data into SCRAMBLE
 ------------------------------------------
@@ -175,10 +175,10 @@ Note: Data can be exported following instructions below.
 2. Enter details into the "Device Parameters"
 3. Highlight the data of choice from "Data List". Note that the use of standard windows controls such as shift, ctrl, mouse drag etc for the multiple selection of data is supported in this listbox. 
 4. Decide on presentation from "Visualisation"
-5a. To plot data of choice press "Process Data" button
-5b. To average; select data of choice, enter name into the "User Input" box, then press "Average" button
-6a. To export all data press, enter name into the "User Input" box, then press "Export All" button
-6b. To export selected data, select data, enter name into the "User Input" box, then press "Export Select" button
+5. To plot data of choice press "Process Data" button
+6. To average; select data of choice, enter name into the "User Input" box, then press "Average" button
+7. To export all data press, enter name into the "User Input" box, then press "Export All" button
+8. To export selected data, select data, enter name into the "User Input" box, then press "Export Select" button
 
 Note that the individual figures can be manipulated with the navigation toolbars allowing, panning, zooming and the configuration of subplots. Pressing the “Save” icon allows the user to export the plots in various formats such as Portable Network Graphics (PNG), Scalable Vector Graphics (SVG) and Raw RGBA bitmap to name a few.
 
