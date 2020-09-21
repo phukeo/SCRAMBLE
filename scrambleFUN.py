@@ -1,8 +1,6 @@
 import os
 import numpy as np
 import matplotlib.pyplot as pp
-import matplotlib.patches as mpatches
-from matplotlib.patches import Rectangle
 import pandas as pd
 
 #########################
@@ -294,8 +292,18 @@ def processData(selectedList,Vds,deviceL,deviceW,oxideThick,oxideDielectric, mou
         shortNames=[]
         fourCharacterNames=[]
         for items in selectedList:
-            shortNames.append(items[2:])
-            fourCharacterNames.append(items[2:6])
+            if items.find("_")==1 or items.find("_")==2: # Then the user has numbered folders as per SCRAMBLES instructions
+                firstOccurence=items.find("_")
+                secondOccurence=items.find("_",firstOccurence+1)
+                if secondOccurence-firstOccurence<5: # Then the foldername is less than 4 characters long
+                    shortNames.append(items[firstOccurence+1:secondOccurence])
+                    fourCharacterNames.append(items[firstOccurence+1:secondOccurence])
+                else:
+                    shortNames.append(items[firstOccurence+1:])
+                    fourCharacterNames.append(items[firstOccurence+1:firstOccurence+5])    
+            else:
+                shortNames.append(items[:4])
+                fourCharacterNames.append(items[0:4])
     
         # Collect Data from BOD_Parameters table 
         fDPI=list(BODStats.iloc[0])
@@ -329,7 +337,7 @@ def processData(selectedList,Vds,deviceL,deviceW,oxideThick,oxideDielectric, mou
             axStatsL[2].hist(electrons,bins=10, color=color, alpha=0.5, rwidth=0.6)
         
         # Finalise the axes parameters for the Sweep Visualisation Plot
-        axStatsL[0].set_xlabel("$V_{bg}$ (V)", fontsize="xx-small")
+        axStatsL[0].set_xlabel("$V_{bg}$ (V)", fontsize=fontSize)
         axStatsL[0].set_ylabel("$\mu$ ($cm^2 V^{-1} s^{-1}$)", fontsize=fontSize)
         axStatsL[0].tick_params(axis="both", labelsize=labelSize)
         axStatsL[1].set_xlabel("Hole $\mu$ ($cm^2 V^{-1} s^{-1}$)", fontsize=fontSize)
