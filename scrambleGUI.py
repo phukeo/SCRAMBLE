@@ -155,18 +155,21 @@ def buttonPress (function, *args):
         originalDirect
         directory=askdirectory(initialdir=os.path.dirname(originalDirect+"\\"),title='Please select a folder where the data lives...')
 
-        v1,v2,v3=function(directory)
+        if directory=="": # This handles the case where the user presses cancel. 
+            pass
+        else:
+            v1,v2,v3=function(directory)
 
-        newDesk=v3
-        lstbox.delete('0', 'end')
-        for i, item in enumerate (newDesk):
-            lstbox.insert(i,item)
-        lstbox.grid(row=0, column=0, columnspan=4, sticky="nesw")
+            newDesk=v3
+            lstbox.delete('0', 'end')
+            for i, item in enumerate (newDesk):
+                lstbox.insert(i,item)
+            lstbox.grid(row=0, column=0, columnspan=4, sticky="nesw")
 
-        # Create a vertical scrollbar to the right of the listbox
-        yscroll = tk.Scrollbar(frame2,command=lstbox.yview, orient=tk.VERTICAL)
-        yscroll.grid(row=0, column=3, sticky=tk.N+tk.S+tk.E)
-        lstbox.configure(yscrollcommand=yscroll.set)
+            # Create a vertical scrollbar to the right of the listbox
+            yscroll = tk.Scrollbar(frame2,command=lstbox.yview, orient=tk.VERTICAL)
+            yscroll.grid(row=0, column=3, sticky=tk.N+tk.S+tk.E)
+            lstbox.configure(yscrollcommand=yscroll.set)
 
 
 def buttonPress1 (function,*args):
@@ -174,18 +177,22 @@ def buttonPress1 (function,*args):
         originalDirect
         directory=askopenfilename(initialdir=os.path.dirname(originalDirect+"\\"),title='Please select a .BOD file to look at...')
 
-        v1,v2=function(directory)
-        
-        niceCoffee=v2
-        lstbox.delete('0', 'end')
-        for i, item in enumerate (niceCoffee):
-            lstbox.insert(i,item)
-        lstbox.grid(row=0, column=0, columnspan=4, sticky="nesw")
+        if directory=="": # This handles the case where the user presses cancel.
+            pass
+        else:
 
-        # Create a vertical scrollbar to the right of the listbox
-        yscroll = tk.Scrollbar(frame2,command=lstbox.yview, orient=tk.VERTICAL)
-        yscroll.grid(row=0, column=3, sticky=tk.N+tk.S+tk.E)
-        lstbox.configure(yscrollcommand=yscroll.set)
+            v1,v2=function(directory)
+            
+            niceCoffee=v2
+            lstbox.delete('0', 'end')
+            for i, item in enumerate (niceCoffee):
+                lstbox.insert(i,item)
+            lstbox.grid(row=0, column=0, columnspan=4, sticky="nesw")
+
+            # Create a vertical scrollbar to the right of the listbox
+            yscroll = tk.Scrollbar(frame2,command=lstbox.yview, orient=tk.VERTICAL)
+            yscroll.grid(row=0, column=3, sticky=tk.N+tk.S+tk.E)
+            lstbox.configure(yscrollcommand=yscroll.set)
 
     if function == sfu.exportALLF:
         userExportName=userSaveNameEntry.get()
