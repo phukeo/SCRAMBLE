@@ -259,8 +259,6 @@ def itemsFromList (function,*arg):
         oxideDielecEntry.delete(0,END)
         oxideDielecEntry.insert(0,"ERROR Er=3.8")
 
-    # print(Vds,deviceL,deviceW,oxideThick,oxideDielectric)
-
     # Plotting resistance or current depends on the mouse variable 
     mouse=r.get() # Variable for Radiobuttons
     
