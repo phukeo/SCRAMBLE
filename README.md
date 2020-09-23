@@ -5,7 +5,7 @@
 
 **SCRAMBLE** (**S**weep **C**omparison **R**esearch **A**pplication for **M**ultiple **B**ack-gated fie**L**d **E**ffect measurements) is an open-source software package for the comparison of back-gated sweep measurements for graphene field effect transistors (GFETs). It automatically determines the Dirac points, positions of maximum transconductance and calculates the field effect mobilities for electrons and holes. 
 
-Version: 2.0
+Version: 1.0
 
 License: MIT
 
@@ -24,7 +24,7 @@ Request: Please cite this software package if it has been helpful with your own 
 
 1. Windows 64-bit operating system.
 2. Python version 3.6.
-3. Non standard Python Dependencies requiring installation (see XXXX [hyperlink to installing modules])
+3. Non standard Python Dependencies requiring installation ([Details here](https://docs.python.org/3/installing/index.html))
 	* Matplotlib
 	* NumPy
 	* Pandas
@@ -42,15 +42,16 @@ Data must be acquired from Semiconductor Device Analysers (SDA) with the followi
 
 1. The independent variable is Back-gate voltage (Vbg) in units (V)
 2. The dependent variable is Current through the GFET (Isd) in units (A)
-5. Files are exported from SDAs as .csv
-6. There is an equal number of points for the forward and reverse sweeps
-7. The sweep occurs in the following manner.
+3. There is an ODD number of points for each direction.
+4. There is an equal number of points for the forward and reverse sweeps
+5. The sweep occurs in the following manner.
 	* Forward Sweep begins at the lower Vbg value (Vbgl)
-	* Forward Sweep takes an integer number of points to get the higher Vbg value (Vbgh)
+	* Forward Sweep takes an (odd) integer number of points to get the higher Vbg value (Vbgh)
 	* Forward Sweep finishes at Vbgh
 	* Backward Sweep begins at Vbgh 
-	* Backward Sweep takes an integer number of points to get Vbgl
+	* Backward Sweep takes an (odd) integer number of points to get Vbgl
 	* Backward Sweep finishes at Vbgl
+6. Files are exported from SDAs as .csv
 
 **Demonstrative Example**:
  
@@ -58,7 +59,8 @@ Data must be acquired from Semiconductor Device Analysers (SDA) with the followi
 * Here; Vbgl = -100 V, and Vbgh = +100 V.
 * The independent variable is swept such that the following points are evaluated:
 	* [-100, -99, -98 , ..., +98, +99, +100, +100, +99, +98,..., -98, -99, -100] 
-* Note that +100 is evaluated twice. 
+* There are a total of 402 points, 201 for the forward and 201 for the reverse. 
+* Note that all points (including +100) are evaluated twice. 
 
 ### 2 - Data Saving Conventions
 
@@ -104,7 +106,7 @@ There are two ways to download SCRAMBLE. One way relies on users having Git prev
 
 ### 1 - Downloading the .ZIP 
 
-1. Navigate to the online github repositiory [XXXXX hyperlink]
+1. Navigate to the online github repositiory ([Link here](https://github.com/phukeo/SCRAMBLE))
 2. Press the green "Code" button and select "Download ZIP" from the dropdown
 3. Extract all contents and relocate the extracted folder to a location of your choice on your machine
 
