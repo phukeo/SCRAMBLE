@@ -117,7 +117,7 @@ def statsTable(selection):
     statsFrame=pd.concat([statsFrame,fDPIgradMaxI], ignore_index=True)
     
     #Current value at 0 BackGate - fI0Vg
-    fI0Vg1=fDrain.iloc[100].values[0]
+    fI0Vg1=fDrain.iloc[int(((fDrain.shape[0])-1)/2)].values[0] # Halfway point
     fI0Vg=pd.Series(fI0Vg1)
     statsFrame=pd.concat([statsFrame,fI0Vg], ignore_index=True)
     
@@ -154,7 +154,7 @@ def statsTable(selection):
     statsFrame=pd.concat([statsFrame,rDPIgradMaxI], ignore_index=True)
 
     #Current value at 0 BackGate - fI0Vg
-    rI0Vg1=rDrain.iloc[100].values[0]
+    rI0Vg1=rDrain.iloc[int(((rDrain.shape[0])-1)/2)].values[0]
     rI0Vg=pd.Series(rI0Vg1)
     statsFrame=pd.concat([statsFrame,rI0Vg], ignore_index=True)
     
@@ -592,7 +592,7 @@ def defineInsides(x,y,selection,HorV):
 
 if __name__=="__main__":
     # Testing is conducted down here...
-    # print("Running test code inside the module")
+    print("Running test code inside the module")
     # atest,btest=importBOD("C:\\Users\\bodriscoll\\Documents\\Python\\Git\\IdVg_Viewer\\BODName.bod")
         
     # a,b,c=processData(["1_Bare_D4-23-M2","1_Bare_D4-23-M3"],0.005,95/(1*10**6),80/(1*10**6),300/(1*10**9),3.8,1)
@@ -601,8 +601,10 @@ if __name__=="__main__":
     # c.show()
     # pp.show()
 
-    atest,btest=importBOD("C:\\Users\\bodriscoll\\Documents\\Work\\Papers\\2-BOD-Original_Software_Publication\\Data\\SWR\\SweepRangeFix.bod")
-    a,b,c=processData(["1_80_D2-87-M2","2_90_D2-87-M14"],0.005,95/(1*10**6),80/(1*10**6),300/(1*10**9),3.8,1)
+    #atest,btest=importBOD("C:\\Users\\bodriscoll\\Documents\\Work\\Papers\\2-BOD-Original_Software_Publication\\Data\\SWR\\SweepRangeFix.bod")
+    atest,btest=importBOD("C:\\Users\\bodriscoll\\Documents\\Work\\Papers\\2-BOD-Original_Software_Publication\\Data\\Final_Test\\FROM SCRAMBLE\\TESTOUTPUT_Export_Selected_Data.bod")
+    #a,b,c=processData(["1_80_D2-87-M2","2_90_D2-87-M14"],0.005,95/(1*10**6),80/(1*10**6),300/(1*10**9),3.8,1)
+    a,b,c=processData(["1_Pristine_D4-34-M1","2_Annealled_D4-34-M2"],0.05,95/(1*10**6),80/(1*10**6),300/(1*10**9),3.8,0)
     a.show()
     b.show()
     c.show()
