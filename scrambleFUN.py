@@ -161,16 +161,16 @@ def statsTable(selection):
     ## CONSTRUCT THE PARAMETER TABLE ##
 
     insides = {'Column 1'     : [1,2,3,4,5,6,30,40,50,60,70,80],
-                'Index Title'  : ["fDPI","fDPV","fDPMaxgrad","fDPMaxgradV", "fDPMaxgradI", "fI0Vg",
-                                  "rDPI","rDPV","rDPMaxgrad","rDPMaxgradV","rDPMaxgradI", "rI0Vg"]}
+                'Index Title'  : ["fDPI","fDPV","fMaxgrad","fMaxgradV", "fMaxgradI", "fI0Vg",
+                                  "rDPI","rDPV","rMaxgrad","rMaxgradV","rMaxgradI", "rI0Vg"]}
     blankStats = pd.DataFrame(insides)
     del blankStats["Column 1"]
-    blankStats.index.name = "BOD_Stats"
+    blankStats.index.name = "BOD_Params"
     newFrame=pd.concat([blankStats,statsFrame], axis=1) #Concatenate the initial df with data from statsFrame
     newFrame.index = newFrame["Index Title"]
     del newFrame["Index Title"]
     newFrame.columns=[selection]
-    newFrame.index.name="BOD_Stats"
+    newFrame.index.name="BOD_Params"
     
     return newFrame #Output from StatsTable
 
@@ -539,8 +539,12 @@ def exportSelectedF(selectedList,Vds,L,W,oxideThick,oxideDielectric):
 
             # Section to export the Parameters
             newFrame1=statsTable(selection)
+            rFrame=Vds/(newFrame1.iloc[[0,4,5,6,10,11],:]) # Add in the Parameters for Resistance space
+            rFrame.index=['fDPR', 'fMaxgradR','fR0Vg', 'rDPR', 'rMaxgradR','rR0Vg']
+            newFrame1=pd.concat([newFrame1,rFrame],axis=0)
             frameToAdd1=newFrame1
             BODStats1=pd.concat([BODStats1,frameToAdd1], axis=1)
+            BODStats1.index.name="BOD_Params"
             
             # Section to export the Mobilities
             _,_,_,newFrameMob1=mobility(selection,Vds,L,W,oxideThick,oxideDielectric)
