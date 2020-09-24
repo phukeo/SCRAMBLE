@@ -144,6 +144,19 @@ Setting the device parameters to default values suitable for your devices will o
 7. Check Units! 
 8. Save and close the file
 
+### 3 - Device Parameters Error Defaults
+
+The default values that SCRAMBLE uses when the entries to the Device Parameters require customisation
+
+1. Open up the 'scrambleGUI.py' file in a text editor
+2. Navigate to lines XXX and XXX which reads ` Vds=0.005` and ` sourceDrainEntry.insert(0,"ERROR VDS=0.005")`. Replace ` 0.005`  in both instances to default error value for Vds
+3. Navigate to lines XXX and XXX which reads ` deviceL=9.5*10**-5` and ` deviceLengthEntry.insert(0,"ERROR Length=9.5E-5")`. Replace ` 9.5*10**-5` and ` 9.5E-5`   to default error value for Device Length
+4. Navigate to lines XXX and XXX which reads ` deviceW=8.0*10**-5` and ` deviceWidthEntry.insert(0,"ERROR Width=8.0E-5")`. Replace ` 8.0*10**-5` and ` 8.05E-5` to default error value for Device width
+5. Navigate to lines XXX and XXX which reads ` oxideThick=3.0*10**-7` and ` oxideThickEntry.insert(0,"ERROR Tox=3.0E-7")`. Replace ` 3.0*10**-7` and ` 3.0E-7`  to default error value for Oxide Thickness
+6. Navigate to lines XXX and XXX which reads ` oxideDielectric=3.8` and ` oxideDielecEntry.insert(0,"ERROR Er=3.8")`. Replace ` 3.8`  in both instances to default error value for Oxide Dielectric Constant
+7. Check Units!
+8. Save and close the file
+
 ************************
 # Using SCRAMBLE
 ************************
