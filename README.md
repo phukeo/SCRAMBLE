@@ -9,7 +9,7 @@ Version: 1.0
 
 License: MIT
 
-Request: Please cite this software package if it has been helpful with your own research - HyperLink [XXXXXX]
+Request: Please cite this software package if it has been helpful with your own research
   
 ## Files Included
 
@@ -127,8 +127,8 @@ Users will need to customise the import algorithm to be in accordance with the d
 2. Determine the column numbers for the data and denote these as i for Vbg and j for Isd.
 3. Determine the row number for the data and denote this as k. Note that this should be the header row for the data.
 4. Open up the 'scrambleFUN.py' file in a text editor
-5. Navigate to line XXX which reads ` df=pd.read_csv(fName, usecols=[1,2], skiprows=248)`
-6. Alter line XXX to read ` df=pd.read_csv(fName, usecols=[i,j], skiprows=(k-1))`
+5. Navigate to line 39 which reads ` df=pd.read_csv(fName, usecols=[1,2], skiprows=248)`
+6. Alter line 39 to read ` df=pd.read_csv(fName, usecols=[i,j], skiprows=(k-1))`
 7. Save and close the file
 
 ### 2 - Device Parameters
@@ -136,24 +136,24 @@ Users will need to customise the import algorithm to be in accordance with the d
 Setting the device parameters to default values suitable for your devices will offer a substantial time saving everytime SCRAMBLE is used. This is easily achieved following steps below:
 
 1. Open up the 'scrambleGUI.py' file in a text editor
-2. Navigate to line XXX which reads ` sourceDrainEntry.insert(0,5)`. Replace ' 5' mV with default value for Vds
-3. Navigate to line XXX which reads ` deviceLengthEntry.insert(0,95)`. Replace ' 95' um with default value for Device length
-4. Navigate to line XXX which reads ` deviceWidthEntry.insert(0,80)`. Replace ' 80' um with default value for Device width
-5. Navigate to line XXX which reads ` oxideThickEntry.insert(0,300)`. Replace ' 300' nm with default value for Oxide Thickness
-6. Navigate to line XXX which reads ` oxideDielecEntry.insert(0,3.8)`. Replace ' 3.8' with default value for Oxide Dielectric Constant
+2. Navigate to line 353 which reads ` sourceDrainEntry.insert(0,5)`. Replace ' 5' mV with default value for Vds
+3. Navigate to line 360 which reads ` deviceLengthEntry.insert(0,95)`. Replace ' 95' um with default value for Device length
+4. Navigate to line 367 which reads ` deviceWidthEntry.insert(0,80)`. Replace ' 80' um with default value for Device width
+5. Navigate to line 374 which reads ` oxideThickEntry.insert(0,300)`. Replace ' 300' nm with default value for Oxide Thickness
+6. Navigate to line 381 which reads ` oxideDielecEntry.insert(0,3.8)`. Replace ' 3.8' with default value for Oxide Dielectric Constant
 7. Check Units! 
 8. Save and close the file
 
 ### 3 - Device Parameters Error Defaults
 
-The default values that SCRAMBLE uses when the entries to the Device Parameters require customisation
+The default values that SCRAMBLE uses when the entries to the Device Parameters cause an error
 
 1. Open up the 'scrambleGUI.py' file in a text editor
-2. Navigate to lines XXX and XXX which reads ` Vds=0.005` and ` sourceDrainEntry.insert(0,"ERROR VDS=0.005")`. Replace ` 0.005`  in both instances to default error value for Vds
-3. Navigate to lines XXX and XXX which reads ` deviceL=9.5*10**-5` and ` deviceLengthEntry.insert(0,"ERROR Length=9.5E-5")`. Replace ` 9.5*10**-5` and ` 9.5E-5`   to default error value for Device Length
-4. Navigate to lines XXX and XXX which reads ` deviceW=8.0*10**-5` and ` deviceWidthEntry.insert(0,"ERROR Width=8.0E-5")`. Replace ` 8.0*10**-5` and ` 8.05E-5` to default error value for Device width
-5. Navigate to lines XXX and XXX which reads ` oxideThick=3.0*10**-7` and ` oxideThickEntry.insert(0,"ERROR Tox=3.0E-7")`. Replace ` 3.0*10**-7` and ` 3.0E-7`  to default error value for Oxide Thickness
-6. Navigate to lines XXX and XXX which reads ` oxideDielectric=3.8` and ` oxideDielecEntry.insert(0,"ERROR Er=3.8")`. Replace ` 3.8`  in both instances to default error value for Oxide Dielectric Constant
+2. Navigate to lines 221 and 223 which reads ` Vds=0.005` and ` sourceDrainEntry.insert(0,"ERROR VDS=0.005")`. Replace ` 0.005`  in both instances to default error value for Vds
+3. Navigate to lines 230 and 232 which reads ` deviceL=9.5*10**-5` and ` deviceLengthEntry.insert(0,"ERROR Length=9.5E-5")`. Replace ` 9.5*10**-5` and ` 9.5E-5`   to default error value for Device Length
+4. Navigate to lines 239 and 241 which reads ` deviceW=8.0*10**-5` and ` deviceWidthEntry.insert(0,"ERROR Width=8.0E-5")`. Replace ` 8.0*10**-5` and ` 8.05E-5` to default error value for Device width
+5. Navigate to lines 249 and 251 which reads ` oxideThick=3.0*10**-7` and ` oxideThickEntry.insert(0,"ERROR Tox=3.0E-7")`. Replace ` 3.0*10**-7` and ` 3.0E-7`  to default error value for Oxide Thickness
+6. Navigate to lines 258 and 260 which reads ` oxideDielectric=3.8` and ` oxideDielecEntry.insert(0,"ERROR Er=3.8")`. Replace ` 3.8`  in both instances to default error value for Oxide Dielectric Constant
 7. Check Units!
 8. Save and close the file
 
@@ -196,8 +196,6 @@ Note: Data can be exported following instructions below.
 8. To export selected data, select data, enter name into the "User Input" box, then press "Export Select" button
 
 Note that the individual figures can be manipulated with the navigation toolbars allowing, panning, zooming and the configuration of subplots. Pressing the “Save” icon allows the user to export the plots in various formats such as Portable Network Graphics (PNG), Scalable Vector Graphics (SVG) and Raw RGBA bitmap to name a few.
-
-A more detailed walkthrough is given here - XXXXX [hyperlink to paper]
 
 Acknowledgement
 ---------------
