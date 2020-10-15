@@ -186,6 +186,8 @@ Note: Data can be exported following instructions below.
 ## Stage III - Using SCRAMBLE
 -----------------------------
 
+### User Guide
+
 1. Select data: Use "Open Folder" or "Open .BOD" depending on desired import pathway (see above)
 2. Enter details into the "Device Parameters"
 3. Highlight the data of choice from "Data List". Note that the use of standard windows controls such as shift, ctrl, mouse drag etc for the multiple selection of data is supported in this listbox. 
@@ -196,6 +198,32 @@ Note: Data can be exported following instructions below.
 8. To export selected data, select data, enter name into the "User Input" box, then press "Export Select" button
 
 Note that the individual figures can be manipulated with the navigation toolbars allowing, panning, zooming and the configuration of subplots. Pressing the “Save” icon allows the user to export the plots in various formats such as Portable Network Graphics (PNG), Scalable Vector Graphics (SVG) and Raw RGBA bitmap to name a few.
+
+### Name of Metrics from Parameter File
+
+Table below provides an explanation of the names in the exported Parameter files  
+
+| Exported Name| Explanation|
+| ------------- |-------------|
+|fDPI|Current value for forward Dirac point|
+|fDPV|Voltage value for forward Dirac point|
+|fMaxgrad|Maximum gradient (conductance) value for the forward sweep|
+|fMaxgradV|Voltage value for the maximum gradient for forward sweep|
+|fMaxgradI|Current value for the maximum gradient for forward sweep|
+|fI0Vg|Current value at VG=0 for the forward sweep|
+|rDPI|Current value for reverse Dirac point|
+|rDPV|Voltage value for reverse Dirac point|
+|rMaxgrad|Maximum gradient (conductance) value for the reverse sweep|
+|rMaxgradV|Voltage value for the maximum gradient for reverse sweep|
+|rMaxgradI|Current value for the maximum gradient for reverse sweep|
+|rI0Vg|Current value at VG=0 for the reverse sweep|
+|fDPR|Resistance value for forward Dirac point|
+|fMaxgradR|Resistance value for the maximum gradient for forward sweep|
+|fR0Vg|Resistance value at VG=0 for the forward sweep|
+|rDPR|Resistance value for reverse Dirac point|
+|rMaxgradR|Resistance value for the maximum gradient for reverse sweep|
+|rR0Vg|Resistance value at VG=0 for the reverse sweep|
+
 
 Acknowledgement
 ---------------
