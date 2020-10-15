@@ -25,7 +25,7 @@ Request: Please cite this software package if it has been helpful with your own 
 1. Windows 64-bit operating system.
 2. Python version 3.6.
 3. Non standard Python Dependencies requiring installation ([Details here](https://docs.python.org/3/installing/index.html))
-	* Matplotlib
+	* Matplotlib 3.2.2
 	* NumPy
 	* Pandas
 
