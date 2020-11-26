@@ -9,6 +9,8 @@ Version: 1.0
 
 License: MIT
 
+Video Walkthrough: [Found here](https://plymouth.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?pid=d0baedfd-75ee-426c-bb60-ac5600b5bc03) 
+
 Request: Please cite this software package if it has been helpful with your own research
   
 ## Files Included
